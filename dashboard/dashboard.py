@@ -13,7 +13,7 @@ st.set_page_config(
 # ── Load data ─────────────────────────────────────────────────────────────────
 @st.cache_data
 def load_data():
-    return pd.read_csv("job_posting_clean.csv")
+    return pd.read_csv("dashboard/job_posting_clean.csv")
 
 df_raw = load_data()
 
