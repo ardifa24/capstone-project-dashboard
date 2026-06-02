@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
+import io
 from collections import Counter
 
 # ── Page config ───────────────────────────────────────────────────────────────
@@ -95,7 +96,7 @@ def apply_axis_colors(fig):
 # ── Pre-compute skill data ────────────────────────────────────────────────────
 @st.cache_data
 def compute_skills(data_json):
-    d = pd.read_json(data_json, orient="split")
+    d = pd.read_json(io.StringIO(data_json), orient="split")
     freq, salary_rows = [], []
     for _, row in d.iterrows():
         if pd.isna(row["skills_required"]):
